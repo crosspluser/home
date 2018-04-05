@@ -13,10 +13,10 @@ sudo vim /etc/samba/smb.conf
 写入文件最后
 ```
 [share]
-path = /home/$USER
+path = /home/你的用户名
 public = yes
 writable = yes
-valid users = $USER
+valid users = 你的用户名
 create mask = 0644
 force create mode = 0644
 directory mask = 0755
@@ -28,10 +28,16 @@ available = yes
 ```
 sudo touch /etc/samba/smbpasswd
 
-sudo smbpasswd -a "$USER"
+sudo smbpasswd -a "你的用户名"
 ```
 
 重启服务
 ```
 sudo /etc/init.d/samba restart
+```
+
+客户端测试
+```
+sudo apt-get install smbclient 
+smbclient -L //ip:port/share
 ```
